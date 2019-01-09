@@ -14,6 +14,7 @@ Run the `danmachi_builder.py` file to start the program. This program has been d
 - `configparser`
 - `csv`
 - `tkinter`
+- `platform`
 
 ## Example UI
 
