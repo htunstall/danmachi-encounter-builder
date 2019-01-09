@@ -6,6 +6,7 @@ from tkinter.scrolledtext import ScrolledText
 
 import time
 import os
+import platform
 
 import logic
 
@@ -78,8 +79,11 @@ def show(conf_values, build_values):
     window = tkinter.Tk()
     # Set the master window title
     window.title("DanMachi Encounter Builder - Ver: 0.4-dev - Author: Harry Tunstall")
-    # Set the .ico from the ui folder
-    window.iconbitmap(os.path.abspath(os.path.join(conf_values.paths.data_files, "icon.ico")))
+    # If the system is windows set the icon (as this breaks the linux version)
+    system_id = platform.system()
+    if system_id == "Windows":
+        # Set the .ico from the ui folder
+        window.iconbitmap(os.path.abspath(os.path.join(conf_values.paths.data_files, "icon.ico")))
     # Set master window size
     window.minsize(width=min_width, height=min_height)
     #window.resizable(width=False, height=False)
