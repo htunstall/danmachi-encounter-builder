@@ -26,7 +26,7 @@ conf_values.solo_chance = int(conf.get("Encounter", "solo_chance"))
 conf_values.drop_chance = int(conf.get("Encounter", "drop_chance"))
 build_values.cr_zero = conf.get("Encounter", "cr_zero")
 
-conf_values.floor_cr_limits[4] = int(conf.get("Cr_Limits", "up_to_floor_4"))    
+conf_values.floor_cr_limits[4] = int(conf.get("Cr_Limits", "up_to_floor_4"))
 conf_values.floor_cr_limits[7] = int(conf.get("Cr_Limits", "up_to_floor_7"))
 conf_values.floor_cr_limits[12] = int(conf.get("Cr_Limits", "up_to_floor_12"))
 
