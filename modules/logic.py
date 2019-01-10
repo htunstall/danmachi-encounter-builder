@@ -4,8 +4,8 @@ import random
 
 #from tkinter import messagebox
 
-import ui
-import classes
+from . import ui
+from . import classes
 
 # -----------------------------------------------------------------------------
 # Procedures

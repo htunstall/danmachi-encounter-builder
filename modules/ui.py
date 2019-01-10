@@ -8,7 +8,7 @@ import time
 import os
 import platform
 
-import logic
+from . import logic
 
 # -----------------------------------------------------------------------------
 # Global Variables
@@ -63,6 +63,7 @@ def build_click(logbox, conf_values, build_values, level, size, floor, drop_chan
     build_values.cr_zero = cr_zero
     build_values.dc_easy = dc_easy
     build_values.dc_rolled = dc_rolled
+    
     logic.build_enc(logbox, conf_values, build_values)
 
 def wipe_log(logbox):

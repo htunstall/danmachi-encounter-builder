@@ -1,34 +1,27 @@
 import os
-import sys
 
-# Define where the modules folder is located and add it to the path
-modules_path = os.path.abspath(os.path.join(os.getcwd(), "modules"))
-if not sys.path.count(modules_path) >= 1:
-    # Add the modules folder to the python enviroment
-    sys.path.insert(0, modules_path)
-del modules_path
-
-import ui
-import conf_values as conf
-import classes
+from modules import ui
+from modules import conf_values as conf
+from modules import classes
 
 # -----------------------------------------------------------------------------
 # Execultes when code starts
 # -----------------------------------------------------------------------------
-conf_values = classes.Conf()
+conf_values  = classes.Conf()
 build_values = classes.Build()
 
-conf_values.paths.cwd = os.path.abspath(os.getcwd())
+conf_values.paths.cwd        = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
+print("\nroot dir:", conf_values.paths.cwd, "\n")
 conf_values.paths.data_files = os.path.join(conf_values.paths.cwd, "data_files")
-conf_values.paths.modules = os.path.join(conf_values.paths.cwd, "modules")
+conf_values.paths.modules    = os.path.join(conf_values.paths.cwd, "modules")
 
-conf_values.solo_chance = int(conf.get("Encounter", "solo_chance"))
-conf_values.drop_chance = int(conf.get("Encounter", "drop_chance"))
-build_values.cr_zero = conf.get("Encounter", "cr_zero")
+conf_values.solo_chance = int(conf.get("Encounter", "solo_chance", conf_values))
+conf_values.drop_chance = int(conf.get("Encounter", "drop_chance", conf_values))
+build_values.cr_zero    =     conf.get("Encounter", "cr_zero",     conf_values)
 
-conf_values.floor_cr_limits[4] = int(conf.get("Cr_Limits", "up_to_floor_4"))
-conf_values.floor_cr_limits[7] = int(conf.get("Cr_Limits", "up_to_floor_7"))
-conf_values.floor_cr_limits[12] = int(conf.get("Cr_Limits", "up_to_floor_12"))
+conf_values.floor_cr_limits[4] = int(conf.get("Cr_Limits", "up_to_floor_4",   conf_values))
+conf_values.floor_cr_limits[7] = int(conf.get("Cr_Limits", "up_to_floor_7",   conf_values))
+conf_values.floor_cr_limits[12] = int(conf.get("Cr_Limits", "up_to_floor_12", conf_values))
 
 # Set the floor limit to the first limit at the end of floor 4
 floor_lim = conf_values.floor_cr_limits[4]
