@@ -11,7 +11,14 @@ conf_values  = classes.Conf()
 build_values = classes.Build()
 
 conf_values.paths.cwd        = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
+
 print("\nroot dir:", conf_values.paths.cwd, "\n")
+
+if os.path.basename(conf_values.paths.cwd) == "dist":
+    print("In dist directory, puling up to the root directory...")
+    conf_values.paths.cwd =  os.path.abspath(os.path.join(conf_values.paths.cwd, ".."))
+    print("\nroot dir:", conf_values.paths.cwd, "\n")
+
 conf_values.paths.data_files = os.path.join(conf_values.paths.cwd, "data_files")
 conf_values.paths.modules    = os.path.join(conf_values.paths.cwd, "modules")
 
