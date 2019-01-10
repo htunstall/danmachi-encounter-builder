@@ -23,7 +23,7 @@ An executable file has also been included in the root directory. This is a short
 1) Start a command prompt with the `PYTHONPATH` set (see opening an anaconda terminal below)
 2) Navigate to the root directory of this repository on you system (the folder containing `danmachi_builder.py`) using the `cd` command. For example if this repositroy was on your desktop you would type the following command: `cd C:\Users\[username]\Desktop\danmachi-encounter-builder` (Note this command is case sensitive)
 3) If you have pyinstaller installed move straight to step 4. Run the following command to install pyinstaller: `pip install pyinstaller`
-4) Type `pyinstaller --onefile danmachi_builder.py`
+4) Type `pyinstaller --onefile danmachi_builder.py --icon=data_files\icon.ico`
 5) The executable shortcut in the root directory should now point to the new executable in the `dist` folder.
 6) Run the executable
 
