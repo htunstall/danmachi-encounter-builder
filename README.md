@@ -18,7 +18,7 @@ Run the `danmachi_builder.py` file to start the program. This program has been d
 - `platform`
 
 ### Running an exe file
-An executable file has also been included in the `dist` directory. It was compiled on Windows 7 Professional version, so it may not run on all versions of windows. To build the exe for you system (if it doesn't work) follow these steps:
+An executable file has also been included in the `dist` directory. It was compiled on Windows 7 Professional version, so it may not run on all versions of windows. If you are unable to run the executable file follow the steps below to compile the executable file:
 
 1) Start a command prompt with the `PYTHONPATH` set (see opening an anaconda terminal below)
 2) Navigate to the root directory of this repository on you system (the folder containing `danmachi_builder.py`) using the `cd` command. For example if this repositroy was on your desktop you would type the following command: `cd C:\Users\[username]\Desktop\danmachi-encounter-builder` (Note this command is case sensitive)
