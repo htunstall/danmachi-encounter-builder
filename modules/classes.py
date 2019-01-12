@@ -1,10 +1,11 @@
 class Monster:
-    name = None
-    cr = None
-    floor_start = None
-    floor_end = None
+    name             = None
+    cr               = None
+    floor_start      = None
+    floor_end        = None
     floor_preference = None
-    reference = None
+    drop             = None
+    reference        = None
 
 class Paths:
     cwd = None

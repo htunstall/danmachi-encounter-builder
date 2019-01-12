@@ -1,41 +1,41 @@
-Name,CR,Floors,Preference,Ref
-Rat,0,1-50,1,null
-Bat,0,1-50,1,null
-Hyena,0,3-50,3,null
-Jackal,0,4-50,4,null
-Giant Fire Beetle,0,5-50,5,null
-Kobold,0.125,1-4,1,null
-Blood Hawk,0.125,1-4,2,null
-Constrictor Snake,0.25,1-4,2,null
-Goblin,0.25,1-4,1,null
-Blink Dog,0.25,1-4,3,null
-Giant Wolf Spider,0.25,2-4,4,null
-Hobgoblin,0.5,1-4,1,null
-Lizardfolk,0.5,1-4,3,null
-Orc,0.5,1-4,3,null
-Bugbear,1,1-4,2,null
-Ogre,2,1-4,2,null
-Giant Poisonous Snake,0.25,2-7,2,null
-War Shadow,0.5,6-12,7,null
-Black Bear,0.5,5-7,5,null
-Gnoll,0.5,5-7,6,null
-Jackalwere,0.5,5-7,6,null
-Dire Wolf,1,5-7,5,null
-Brown Bear,1,5-7,5,null
-Lion,1,5-7,6,null
-Hippogriff,1,5-7,7,null
-Half-ogre,1,5-7,6,null
-Giant Hyena,1,5-7,6,null
-Grick,2,5-7,5,null
-Quaggoth,2,5-7,5,null
-Carrion Crawler,2,5-7,6,null
-Wererat,2,5-7,7,null
-Basilisk,3,5-7,7,null
-Bugbear Chief,3,5-7,6,null
-Manticore,3,5-7,7,null
-Minotaur,3,5-7,7,null
-Owlbear,3,5-7,7,null
-Lamia,4,5-7,7,null
-Wereboar,4,5-7,6,null
-Weretiger,4,5-7,6,null
-Gorgon,5,7-12,7,null
+Name,CR,Floors,Preference,Drop,Ref
+Rat,0,1-50,1,null,null
+Bat,0,1-50,1,null,null
+Hyena,0,3-50,3,null,null
+Jackal,0,4-50,4,null,null
+Giant Fire Beetle,0,5-50,5,null,null
+Kobold,0.125,1-4,1,Claw,null
+Blood Hawk,0.125,1-4,2,Claw,null
+Constrictor Snake,0.25,1-4,2,Hide,null
+Goblin,0.25,1-4,1,Tooth,null
+Blink Dog,0.25,1-4,3,Eye,null
+Giant Wolf Spider,0.25,2-4,4,Eye,null
+Hobgoblin,0.5,1-4,1,Tooth,null
+Lizardfolk,0.5,1-4,3,Claw,null
+Orc,0.5,1-4,3,Tooth,null
+Bugbear,1,1-4,2,Ear,null
+Ogre,2,1-4,2,Tooth,null
+Giant Poisonous Snake,0.25,2-7,2,Poison Sack,null
+War Shadow,0.5,6-12,7,null,null
+Black Bear,0.5,5-7,5,null,null
+Gnoll,0.5,5-7,6,null,null
+Jackalwere,0.5,5-7,6,null,null
+Dire Wolf,1,5-7,5,null,null
+Brown Bear,1,5-7,5,null,null
+Lion,1,5-7,6,null,null
+Hippogriff,1,5-7,7,null,null
+Half-ogre,1,5-7,6,null,null
+Giant Hyena,1,5-7,6,null,null
+Grick,2,5-7,5,null,null
+Quaggoth,2,5-7,5,null,null
+Carrion Crawler,2,5-7,6,null,null
+Wererat,2,5-7,7,null,null
+Basilisk,3,5-7,7,null,null
+Bugbear Chief,3,5-7,6,null,null
+Manticore,3,5-7,7,null,null
+Minotaur,3,5-7,7,null,null
+Owlbear,3,5-7,7,null,null
+Lamia,4,5-7,7,null,null
+Wereboar,4,5-7,6,null,null
+Weretiger,4,5-7,6,null,null
+Gorgon,5,7-12,7,null,null

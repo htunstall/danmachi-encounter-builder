@@ -1,5 +1,7 @@
 import configparser
 import os
+import sys
+from tkinter import messagebox
 
 # -----------------------------------------------------------------------------------
 #  Only used in this module
@@ -21,6 +23,9 @@ def config_section_map(section):
 
 def get_filename(conf_values):
     filename =  os.path.abspath(os.path.join(conf_values.paths.data_files, "default.ini"))
+    if os.path.isfile(filename) == False:
+        messagebox.showinfo("Warning!", "Cannot locate the file '{}'. You should run this program from the root or dist directories.\n\nExiting gracefully!".format(os.path.basename(filename)))
+        sys.exit(2)
     return filename
 
 # -----------------------------------------------------------------------------------

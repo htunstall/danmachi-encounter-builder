@@ -1,3 +1,4 @@
+import tkinter
 import os
 
 from modules import ui
@@ -5,8 +6,12 @@ from modules import conf_values as conf
 from modules import classes
 
 # -----------------------------------------------------------------------------
-# Execultes when code starts
+# Executes when code starts
 # -----------------------------------------------------------------------------
+# Create a tempory window to house tkinter messageboxes 
+root = tkinter.Tk()
+root.withdraw()
+
 conf_values  = classes.Conf()
 build_values = classes.Build()
 
@@ -45,4 +50,7 @@ for i in range(1, len(conf_values.floor_cr_limits)):
 # Remove variables not used again
 del (i, j, floor_lim)
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# remove the temporary window used to show error messages
+root.destroy()
+
 ui.show(conf_values, build_values)

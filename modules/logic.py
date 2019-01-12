@@ -49,7 +49,7 @@ def build_enc(logbox, conf_values, build_values):
         ui.log(logbox, "", blank=True)
         
     ui.log(logbox, "", append="{0} Encounter - Total XP: {1}".format(t_diff, total_xp),
-           tag_number="title", font="bold", underline=True)
+           tag_number="title", font="bold", underline=True, show_time=True)
     # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     # Remove variables not used again
     del (xp_inc, i, t_diff, list_diff)
@@ -272,12 +272,17 @@ def build_enc(logbox, conf_values, build_values):
         rnd = random.randint(1,20)
         if conf_values.drop_chance <= rnd:    
             # You get the drop!
-            ui.log(logbox, _message, append=rnd, colour="green",
+            if _monster.drop != "null":
+                # If we know what tie drop item is
+                rnd = _monster.drop
+            appnd_str = "{:>2}".format(rnd)
+            ui.log(logbox, _message, append=appnd_str, colour="green",
                    tag_number=conf_values.tag_number)
             conf_values.tag_number += 1
         else:
             # You don't get the drop
-            ui.log(logbox, _message, append=rnd, colour="red",
+            appnd_str = "{:>2}".format(rnd)
+            ui.log(logbox, _message, append=appnd_str, colour="red",
                    tag_number=conf_values.tag_number)
             conf_values.tag_number += 1
     
@@ -309,7 +314,8 @@ def load_csv_monsters(logbox, monster_list, conf_values):
             monster_list[end_i].floor_start = line[2].split("-")[0]
             monster_list[end_i].floor_end = line[2].split("-")[1]
             monster_list[end_i].floor_preference = line[3]
-            monster_list[end_i].reference = line[4]
+            monster_list[end_i].drop = line[4]
+            monster_list[end_i].reference = line[5]
             
 # Loads the *.csv info into a list of CR <--> XP conversions
 def load_csv_xp(conf_values):

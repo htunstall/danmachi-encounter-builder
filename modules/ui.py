@@ -25,12 +25,15 @@ iypad= 2
 # -----------------------------------------------------------------------------
 # Write to the logbox
 # -----------------------------------------------------------------------------
-def log(logbox, message, blank=False, append=None, colour="black", tag_number=0, font="normal", underline=False):
+def log(logbox, message, blank=False, append=None, colour="black", tag_number=0, font="normal", underline=False, show_time=False):
     _user_message = None
     _size = 10
     d_font = Font(family='Consolas', size=_size)
     if not blank:
-        _user_message = "{} - {}".format(time.strftime("%H:%M:%S"), message)
+        if show_time:
+            _user_message = "({}) {}".format(time.strftime("%H:%M"), message)
+        else:
+            _user_message = message
     else:
         _user_message = ""
     
