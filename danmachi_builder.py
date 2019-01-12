@@ -5,6 +5,7 @@ from modules import ui
 from modules import conf_values as conf
 from modules import classes
 
+ui.version = "0.5.1"
 # -----------------------------------------------------------------------------
 # Executes when code starts
 # -----------------------------------------------------------------------------

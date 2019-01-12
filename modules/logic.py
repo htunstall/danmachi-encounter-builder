@@ -45,7 +45,9 @@ def build_enc(logbox, conf_values, build_values):
     
     # If the Logbox is NOT empty
     if not logbox.compare("end-1c", "==", "1.0"):
-        # Send a blank row to the logbox
+        # Send two blank rows to the logbox
+        ui.log(logbox, "", blank=True)
+        ui.log(logbox, "========================================================")
         ui.log(logbox, "", blank=True)
         
     ui.log(logbox, "", append="{0} Encounter - Total XP: {1}".format(t_diff, total_xp),
@@ -265,11 +267,14 @@ def build_enc(logbox, conf_values, build_values):
 
     # -------------------------------------------------------------------------
     # Ouptut to the user the encounter
-    # ------------------------------------------------------------------------- 
+    # -------------------------------------------------------------------------
+    # Create the set of unique monsters in this encounter (start empty)
+    u_mons = set()
     # Print the selected mosters to the console, with a drop chance
     for _monster in encounter_mo:
+        u_mons.add(_monster.name)
         _message = "{0:<21} - CR: {1:<6} | Drop: ".format(_monster.name, _monster.cr)
-        rnd = random.randint(1,20)
+        rnd = random.randint(1, 20)
         if conf_values.drop_chance <= rnd:    
             # You get the drop!
             if _monster.drop != "null":
@@ -291,6 +296,42 @@ def build_enc(logbox, conf_values, build_values):
     for cr in encounter_cr:
         total_cr = total_cr + float(cr)        
     ui.log(logbox, "                Total - CR: ", append="{0}".format(total_cr),
+           tag_number=conf_values.tag_number, font="normal")
+    
+    # Create a dictionary for each monster and initialise the count to zero
+    mon_count = dict.fromkeys(u_mons, 0)
+    # Calculate the number of each monster in the encounter
+    for _monster in encounter_mo:
+        mon_count[_monster.name] += 1
+    
+    str_mon_count = ""
+    prev_mon = ""
+    column = 0
+    # Print the collated number of monsters as a string
+    for _monster in encounter_mo:
+        _name = _monster.name
+        if prev_mon != _name:
+            prev_mon = _name
+            _count = mon_count[_name]
+            if mon_count[_name] > 1:
+                _name += "s"
+                
+            # Create newlines so the output is nicer
+            if column > 1: # If we're in the 3rd column go to a new line
+                str_mon_count += "\n"
+                column = 0
+            
+            column += 1
+            str_mon_count += "| {:<2} {:<21} |".format(_count, _name)
+    
+    # If we haven't finished a line
+    if column != 2:
+        # Pad
+        str_mon_count += "| {:<2} {:<21} |".format("", "")
+    
+    ui.log(logbox, "", append="Total Number of Monsters",
+           tag_number="title", font="bold", underline=True)
+    ui.log(logbox, str_mon_count, append="",
            tag_number=conf_values.tag_number, font="normal")
     conf_values.tag_number += 1
     

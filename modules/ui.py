@@ -43,7 +43,7 @@ def log(logbox, message, blank=False, append=None, colour="black", tag_number=0,
         font = d_font
     
     # Make the logbox editable
-    logbox.config(state = "normal")    
+    logbox.config(state="normal")    
     # Add some text
     tag = "{0}".format(tag_number)
     if not append == None:        
@@ -56,7 +56,7 @@ def log(logbox, message, blank=False, append=None, colour="black", tag_number=0,
     logbox.tag_config("default", foreground="black", font=d_font)
     # Scroll to the end and make the box uneditable
     logbox.see("end")
-    logbox.config(state = "disabled")
+    logbox.config(state="disabled")
 
 def build_click(logbox, conf_values, build_values, level, size, floor, drop_chance, cr_zero, dc_easy, dc_rolled):
     conf_values.drop_chance = drop_chance
@@ -70,7 +70,9 @@ def build_click(logbox, conf_values, build_values, level, size, floor, drop_chan
     logic.build_enc(logbox, conf_values, build_values)
 
 def wipe_log(logbox):
-    logbox.delete("1.0")
+    logbox.config(state="normal")
+    logbox.delete("1.0", tkinter.END)
+    logbox.config(state="disabled")
 
 def update_ui(dc_slider, dc_spinbox, dc_limit):
     dc_slider.configure(to=dc_limit)
@@ -82,7 +84,7 @@ def update_ui(dc_slider, dc_spinbox, dc_limit):
 def show(conf_values, build_values):
     window = tkinter.Tk()
     # Set the master window title
-    window.title("DanMachi Encounter Builder - Ver: 0.4-dev - Author: Harry Tunstall")
+    window.title("DanMachi Encounter Builder - Ver: {} - Author: Harry Tunstall".format(version))
     # If the system is windows set the icon (as this breaks the linux version)
     system_id = platform.system()
     if system_id == "Windows":
