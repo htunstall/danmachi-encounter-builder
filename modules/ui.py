@@ -13,8 +13,8 @@ from . import logic
 # -----------------------------------------------------------------------------
 # Global Variables
 # -----------------------------------------------------------------------------
-min_width = 600 # Std: 650
-min_height = 550
+min_width = 675 # Std: 650
+min_height = 685
 xpad = 3
 ixpad = 2
 ypad = 4
@@ -92,7 +92,7 @@ def show(conf_values, build_values):
         window.iconbitmap(os.path.abspath(os.path.join(conf_values.paths.data_files, "icon.ico")))
     # Set master window size
     window.minsize(width=min_width, height=min_height)
-    #window.resizable(width=False, height=False)
+    window.resizable(width=True, height=True)
     # Set the size of the larger font
     l_font = Font(family='Helvetica', size=13) # Unlucky for some
 
@@ -111,33 +111,30 @@ def show(conf_values, build_values):
     dc_rolled = tkinter.IntVar() # number at which drops occour
     dc_rolled.set(build_values.dc_rolled)
     
+    
     # -------------------------------------------------------------------------
     #  Top Frame
     # -------------------------------------------------------------------------
     top_frame = tkinter.Frame(window)
-    top_frame.pack(side="top", anchor="nw", padx=xpad, pady=ypad, ipadx=ixpad, ipady=iypad)
+    top_frame.pack(side="top", anchor="w", padx=xpad, pady=ypad, ipadx=ixpad, ipady=iypad)
     
     # -------------------------------------------------------------------------
     #  Build Information Frame
     # -------------------------------------------------------------------------
     build_info = tkinter.LabelFrame(top_frame, text="Build Information")
-    build_info.pack(side="left", anchor="nw", padx=xpad, pady=ypad, ipadx=ixpad, ipady=iypad)
+    build_info.pack(side="top", anchor="w", padx=xpad, pady=ypad, ipadx=ixpad, ipady=iypad)
 
-    floor_frame = tkinter.Frame(build_info)
-    floor_frame.pack(side="top", anchor="nw")
+    # -------------------------------------------------------------------------
+    #  Dungeon Information Frame
+    # -------------------------------------------------------------------------
+    floor_frame = tkinter.LabelFrame(build_info, text="Dungeon")
+    floor_frame.grid(row=0, column=0, padx=xpad, pady=ypad)
     
     # Floor Number
     floor_lb = tkinter.Label(floor_frame, text="Floor: ", pady=ypad)
     floor_lb.pack(side="left")
     floor_box = tkinter.Spinbox(floor_frame, from_=1, to=49, width=2, state="readonly",
                                 textvariable=floor, font=l_font)
-    floor_box.pack(side="left")
-    
-    # Drop Chance
-    floor_lb = tkinter.Label(floor_frame, text="  Drop Chance: ", pady=ypad)
-    floor_lb.pack(side="left")
-    floor_box = tkinter.Spinbox(floor_frame, from_=1, to=20, width=2, state="readonly",
-                                textvariable=drop_chance, font=l_font)
     floor_box.pack(side="left")
     
     # CR 0 Monsters Check Box
@@ -150,64 +147,66 @@ def show(conf_values, build_values):
         cr_zero_bt.deselect()
     
     # -------------------------------------------------------------------------
-    # Difficulty Frame
-    # -------------------------------------------------------------------------
-    diff_frame = tkinter.LabelFrame(build_info, text="Difficulty")
-    diff_frame.pack(side="top", anchor="nw", padx=xpad, fill='x', expand=1)
-    
-    # DC for Encounter
-    diff_frame_slider = tkinter.Frame(diff_frame)
-    diff_frame_slider.pack(side="top", anchor="nw", fill='x', expand=1)
-    
-    dc_easy_lb = tkinter.Label(diff_frame_slider, text="DC for Encounter: ", pady=ypad)
-    dc_easy_lb.pack(side="left")
-    dc_easy_spin = tkinter.Spinbox(diff_frame_slider, from_=10, to=20, width=2,
-                                   state="readonly", textvariable=dc_easy,
-                                   font=l_font, command=lambda:update_ui(dc_slider,
-                                                                         dc_rolled_spin,
-                                                                         dc_easy.get()-1))
-    dc_easy_spin.pack(side="left")
-    
-    # DC Rolled
-    dc_rolled_frame = tkinter.Frame(diff_frame)
-    dc_rolled_frame.pack(side="top", anchor="nw", fill='x', expand=1)
-    
-    dc_rolled_lb = tkinter.Label(dc_rolled_frame, text="DC Rolled: ", pady=ypad)
-    dc_rolled_lb.pack(side="left")
-    dc_rolled_spin = tkinter.Spinbox(dc_rolled_frame, from_=1, to=dc_easy.get()-1,
-                                     width=2, state="readonly", textvariable=dc_rolled,
-                                     font=l_font)
-    dc_rolled_spin.pack(side="left")    
-    dc_slider = tkinter.Scale(dc_rolled_frame, from_=1, to=dc_easy.get()-1,
-                              variable=dc_rolled, orient=tkinter.HORIZONTAL,
-                              length=250, showvalue=False)
-    dc_slider.pack(side="left")
-    
-    # -------------------------------------------------------------------------
     # Party Frame
     # -------------------------------------------------------------------------    
-    size_level_frame = tkinter.LabelFrame(build_info, text="Party")
-    size_level_frame.pack(side="left", anchor="nw", padx=xpad, pady=ypad)
+    party_frame = tkinter.LabelFrame(build_info, text="Party")
+    party_frame.grid(row=0, column=1, padx=xpad, pady=ypad)
     
     # Size
-    size_lb = tkinter.Label(size_level_frame, text="Size: ", pady=ypad)
+    size_lb = tkinter.Label(party_frame, text="Size: ", pady=ypad)
     size_lb.pack(side="left")
-    size_box = tkinter.Spinbox(size_level_frame, from_=1, to=8, width=2,
+    size_box = tkinter.Spinbox(party_frame, from_=1, to=8, width=2,
                                state="readonly", textvariable=size, font=l_font)
     size_box.pack(side="left", padx=xpad, pady=ypad-3)
     
     # Level
-    level_lb = tkinter.Label(size_level_frame, text="level: ")
+    level_lb = tkinter.Label(party_frame, text="level: ")
     level_lb.pack(side="left")
-    level_box = tkinter.Spinbox(size_level_frame, from_=1, to=20, width=2,
+    level_box = tkinter.Spinbox(party_frame, from_=1, to=20, width=2,
                                 state="readonly", textvariable=level, font=l_font)
     level_box.pack(side="left", padx=xpad, pady=ypad-3)
+    
+    # Drop Chance
+    drop_chance_lb = tkinter.Label(party_frame, text="  Drop Chance: ", pady=ypad)
+    drop_chance_lb.pack(side="left")
+    drop_chance_box = tkinter.Spinbox(party_frame, from_=1, to=20, width=2, state="readonly",
+                                textvariable=drop_chance, font=l_font)
+    drop_chance_box.pack(side="left", padx=xpad, pady=ypad-3)
+    
+    # -------------------------------------------------------------------------
+    # Difficulty Frame
+    # -------------------------------------------------------------------------
+    diff_frame = tkinter.LabelFrame(build_info, text="Difficulty")
+    diff_frame.grid(row=1, column=0, columnspan=2, padx=xpad, sticky="w")
+    
+    # DC Encounter
+    dc_easy_lb = tkinter.Label(diff_frame, text="DC for Encounter: ", pady=ypad)
+    dc_easy_lb.grid(row=0, column=0, sticky="e")
+    dc_easy_spin = tkinter.Spinbox(diff_frame, from_=10, to=20, width=2,
+                                   state="readonly", textvariable=dc_easy,
+                                   font=l_font, command=lambda:update_ui(dc_slider,
+                                                                         dc_rolled_spin,
+                                                                         dc_easy.get()-1))
+    dc_easy_spin.grid(row=0, column=1)
+    
+    # DC Rolled    
+    dc_rolled_lb = tkinter.Label(diff_frame, text="DC Rolled: ", pady=ypad)
+    dc_rolled_lb.grid(row=1, column=0, sticky="e")
+    dc_rolled_spin = tkinter.Spinbox(diff_frame, from_=1, to=dc_easy.get()-1,
+                                     width=2, state="readonly", textvariable=dc_rolled,
+                                     font=l_font)
+    dc_rolled_spin.grid(row=1, column=1)    
+    dc_slider = tkinter.Scale(diff_frame, from_=1, to=dc_easy.get()-1,
+                              variable=dc_rolled, orient=tkinter.HORIZONTAL,
+                              length=200, showvalue=False)
+    dc_slider.grid(row=1, column=2, sticky="e")
+    
     
     # ------------------------------------------------------------------------- 
     # Controls Frame
     # -------------------------------------------------------------------------
-    master_butons = tkinter.LabelFrame(top_frame, text="Controls")
-    master_butons.pack(side="left", anchor="nw", padx=xpad, pady=ypad, ipadx=ixpad, ipady=iypad)
+    master_butons = tkinter.LabelFrame(window, text="Controls")
+    master_butons.pack(side="top", anchor="w", padx=xpad, pady=ypad, ipadx=ixpad, ipady=iypad)
     
     # Build Button
     build_bt = tkinter.Button(master_butons, text="Build Encounter",
@@ -221,18 +220,18 @@ def show(conf_values, build_values):
                                                          cr_zero.get(),
                                                          dc_easy.get(),
                                                          dc_rolled.get()))
-    build_bt.pack(side="top", anchor="w", padx=xpad, pady=ypad)
+    build_bt.pack(side="left", anchor="w", padx=xpad, pady=ypad)
     
     # Wipe Log Button
     wipe_lb_bt = tkinter.Button(master_butons, text="Wipe Event Log",
                               command=lambda:wipe_log(logbox))
-    wipe_lb_bt.pack(side="top", anchor="w", padx=xpad, pady=ypad)
+    wipe_lb_bt.pack(side="left", anchor="w", padx=xpad, pady=ypad)
     
     # -------------------------------------------------------------------------
     #  Event Log Frame
     # -------------------------------------------------------------------------
     log_frame = tkinter.LabelFrame(window, text="Event Log")
-    log_frame.pack(side="top", anchor="n", fill="both", expand=1, padx=xpad, pady=ypad)
+    log_frame.pack(side="top", anchor="w", fill="both", expand=1, padx=xpad, pady=ypad, ipadx=ixpad, ipady=iypad)
 
     # ScrolledText log box
     logbox = tkinter.scrolledtext.ScrolledText(log_frame, undo=True, borderwidth=3, wrap='word', state="disabled")
