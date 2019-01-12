@@ -43,4 +43,4 @@ An executable file has also been included in the `dist` directory. It was compil
 
 ## Known Bugs
 
-- The wipe event log button doesn't wipe the event log
+- None
