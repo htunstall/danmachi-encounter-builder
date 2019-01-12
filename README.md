@@ -10,8 +10,10 @@ The `data_files` directory contains the configuration file `default.ini` and the
 Run the `danmachi_builder.py` file to start the program. This program has been developed using anaconda3 (https://www.anaconda.com/download/) however the dependencies are far less than what are included in anaconda:
 
 - `os`
+- `sys`
 - `time`
 - `random`
+- `platform`
 - `configparser`
 - `csv`
 - `tkinter`
