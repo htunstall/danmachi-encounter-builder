@@ -16,7 +16,7 @@ root.withdraw()
 conf_values  = classes.Conf()
 build_values = classes.Build()
 
-conf_values.paths.cwd        = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
+conf_values.paths.cwd = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
 
 print("\nroot dir:", conf_values.paths.cwd, "\n")
 
@@ -32,12 +32,13 @@ conf_values.solo_chance = int(conf.get("Encounter", "solo_chance", conf_values))
 conf_values.drop_chance = int(conf.get("Encounter", "drop_chance", conf_values))
 build_values.cr_zero    =     conf.get("Encounter", "cr_zero",     conf_values)
 
-conf_values.floor_cr_limits[4] = int(conf.get("Cr_Limits", "up_to_floor_4",   conf_values))
-conf_values.floor_cr_limits[7] = int(conf.get("Cr_Limits", "up_to_floor_7",   conf_values))
+conf_values.floor_cr_limits[4]  = int(conf.get("Cr_Limits", "up_to_floor_4",   conf_values))
+conf_values.floor_cr_limits[7]  = int(conf.get("Cr_Limits", "up_to_floor_7",   conf_values))
 conf_values.floor_cr_limits[12] = int(conf.get("Cr_Limits", "up_to_floor_12", conf_values))
 
 # Set the floor limit to the first limit at the end of floor 4
 floor_lim = conf_values.floor_cr_limits[4]
+
 # Fill in the rest of the empty list with the correct floor limit
 for i in range(1, len(conf_values.floor_cr_limits)):
     if conf_values.floor_cr_limits[i] == None:
