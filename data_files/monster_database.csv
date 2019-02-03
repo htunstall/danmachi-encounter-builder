@@ -1,41 +1,41 @@
-Name,CR,Floors,Preference,Drop,Ref
-Rat,0,1-50,1,None,None
-Bat,0,1-50,1,None,None
-Hyena,0,3-50,3,None,None
-Jackal,0,4-50,4,None,None
-Giant Fire Beetle,0,5-50,5,None,None
-Kobold,0.125,1-4,1,Claw,None
-Blood Hawk,0.125,1-4,2,Claw,None
-Constrictor Snake,0.25,1-4,2,Hide,None
-Goblin,0.25,1-4,1,Tooth,None
-Blink Dog,0.25,1-4,3,Eye,None
-Giant Wolf Spider,0.25,2-4,4,Eye,None
-Hobgoblin,0.5,1-4,1,Tooth,None
-Lizardfolk,0.5,1-4,3,Claw,None
-Orc,0.5,1-4,3,Tooth,None
-Bugbear,1,1-4,2,Ear,None
-Ogre,2,1-4,2,Tooth,None
-Giant Poisonous Snake,0.25,2-7,2,Poison Sack,None
-War Shadow,0.5,6-12,7,None,None
-Black Bear,0.5,5-7,5,None,None
-Gnoll,0.5,5-7,6,None,None
-Jackalwere,0.5,5-7,6,None,None
-Dire Wolf,1,5-7,5,None,None
-Brown Bear,1,5-7,5,None,None
-Lion,1,5-7,6,None,None
-Hippogriff,1,5-7,7,None,None
-Half-ogre,1,5-7,6,None,None
-Giant Hyena,1,5-7,6,None,None
-Grick,2,5-7,5,None,None
-Quaggoth,2,5-7,5,None,None
-Carrion Crawler,2,5-7,6,None,None
-Wererat,2,5-7,7,None,None
-Basilisk,3,5-7,7,None,None
-Bugbear Chief,3,5-7,6,None,None
-Manticore,3,5-7,7,None,None
-Minotaur,3,5-7,7,None,None
-Owlbear,3,5-7,7,None,None
-Lamia,4,5-7,7,None,None
-Wereboar,4,5-7,6,None,None
-Weretiger,4,5-7,6,None,None
-Gorgon,5,7-12,7,None,None
+Name,CR,Floor Start,Floor End,Preference,Drop,Ref
+Rat,0,1,50,1,None,None
+Bat,0,1,50,1,None,None
+Hyena,0,3,50,3,None,None
+Jackal,0,4,50,4,None,None
+Giant Fire Beetle,0,5,50,5,None,None
+Kobold,0.125,1,4,1,Claw,None
+Blood Hawk,0.125,1,4,2,Claw,None
+Constrictor Snake,0.25,1,4,2,Hide,None
+Goblin,0.25,1,4,1,Tooth,None
+Blink Dog,0.25,1,4,3,Eye,None
+Giant Wolf Spider,0.25,2,4,4,Eye,None
+Hobgoblin,0.5,1,4,1,Tooth,None
+Lizardfolk,0.5,1,4,3,Claw,None
+Orc,0.5,1,4,3,Tooth,None
+Bugbear,1,1,4,2,Ear,None
+Ogre,2,1,4,2,Tooth,None
+Giant Poisonous Snake,0.25,2,7,2,Poison Sack,None
+War Shadow,0.5,6,12,7,None,None
+Black Bear,0.5,5,7,5,None,None
+Gnoll,0.5,5,7,6,None,None
+Jackalwere,0.5,5,7,6,None,None
+Dire Wolf,1,5,7,5,None,None
+Brown Bear,1,5,7,5,None,None
+Lion,1,5,7,6,None,None
+Hippogriff,1,5,7,7,None,None
+Half-ogre,1,5,7,6,None,None
+Giant Hyena,1,5,7,6,None,None
+Grick,2,5,7,5,None,None
+Quaggoth,2,5,7,5,None,None
+Carrion Crawler,2,5,7,6,None,None
+Wererat,2,5,7,7,None,None
+Basilisk,3,5,7,7,None,None
+Bugbear Chief,3,5,7,6,None,None
+Manticore,3,5,7,7,None,None
+Minotaur,3,5,7,7,None,None
+Owlbear,3,5,7,7,None,None
+Lamia,4,5,7,7,None,None
+Wereboar,4,5,7,6,None,None
+Weretiger,4,5,7,6,None,None
+Gorgon,5,7,12,7,None,None

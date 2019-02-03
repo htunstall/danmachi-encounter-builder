@@ -355,13 +355,13 @@ def load_csv_monsters(logbox, monster_list, conf_values):
             end_i = len(monster_list) - 1
             monster_list[end_i].name = line[0]
             monster_list[end_i].cr = line[1]
-            monster_list[end_i].floor_start = line[2].split("-")[0]
-            monster_list[end_i].floor_end = line[2].split("-")[1]
-            monster_list[end_i].floor_preference = line[3]
-            monster_list[end_i].drop = line[4]
-            if line[5] == "None":
-                line[5] = None    
-            monster_list[end_i].reference = line[5]
+            monster_list[end_i].floor_start = line[2]
+            monster_list[end_i].floor_end = line[3]
+            monster_list[end_i].floor_preference = line[4]
+            monster_list[end_i].drop = line[5]
+            if line[6] == "None":
+                line[6] = None    
+            monster_list[end_i].reference = line[6]
             
 # Loads the *.csv info into a list of CR <--> XP conversions
 def load_csv_xp(conf_values):

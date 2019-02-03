@@ -5,6 +5,8 @@ from tkinter.scrolledtext import ScrolledText
 import time
 import os
 import platform
+import json
+
 
 from . import logic
 from . import classes
@@ -183,15 +185,10 @@ def get_monster(conf_values, o_monster):
        to the associated monster dictionary loaded from the monster.json file. Then
         the procedure to show the monsters stats to the user is called.
     """
-    import os
-    import json
-
     monster_dict = None
     display = True
     
     json_file = os.path.join(conf_values.paths.data_files, "json", "monsters.json")
-
-    print(json_file)
     
     if os.path.isfile(json_file):
         with open(json_file, "r", encoding="utf8") as f:
