@@ -194,6 +194,7 @@ def get_monster(conf_values, o_monster):
         with open(json_file, "r", encoding="utf8") as f:
             monsters_list = json.load(f)["monster"]
     else:
+        print("File:", json_file)
         print("Not a file")
         tkinter.messagebox.showwarning("Warning!", "The program has encountered a Tarrasque... and the whole party was TPK'd.\n\n(The monsters.json could not be found. This is a FATAL error, the program is unable to display monster stats!)")
         display = False
