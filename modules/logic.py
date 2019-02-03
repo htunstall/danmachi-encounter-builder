@@ -322,12 +322,12 @@ def build_enc(logbox, conf_values, build_values):
                 column = 0
             
             column += 1
-            str_mon_count += "| {:<2} {:<21} |".format(_count, _name)
+            str_mon_count += "| {:<2} {:<23} |".format(_count, _name)
     
     # If we haven't finished a line
     if column != 2:
         # Pad
-        str_mon_count += "| {:<2} {:<21} |".format("", "")
+        str_mon_count += "| {:<2} {:<23} |".format("", "")
     
     ui.log(logbox, "", append="Total Number of Monsters",
            tag_number="title", font="bold", underline=True)
@@ -335,6 +335,9 @@ def build_enc(logbox, conf_values, build_values):
            tag_number=conf_values.tag_number, font="normal")
     conf_values.tag_number += 1
     
+    # Set the encounter monsters back to a ui global variable
+    #ui.cur_encounter = encounter_mo
+    return encounter_mo
     
 # -----------------------------------------------------------------------------
 # Procedures for File Importing
@@ -356,6 +359,8 @@ def load_csv_monsters(logbox, monster_list, conf_values):
             monster_list[end_i].floor_end = line[2].split("-")[1]
             monster_list[end_i].floor_preference = line[3]
             monster_list[end_i].drop = line[4]
+            if line[5] == "None":
+                line[5] = None    
             monster_list[end_i].reference = line[5]
             
 # Loads the *.csv info into a list of CR <--> XP conversions
