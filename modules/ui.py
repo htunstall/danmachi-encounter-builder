@@ -618,9 +618,14 @@ def show(conf_values, build_values):
     wipe_lb_bt.pack(side="left", anchor="w", padx=xpad, pady=ypad)
     
     # Show monster stats Button
-    wipe_lb_bt = tkinter.Button(master_butons, text="Show Monster Stats",
+    stats_bt = tkinter.Button(master_butons, text="Show Monster Stats",
                               command=lambda:show_monster_stats_ui(build_values, conf_values))
-    wipe_lb_bt.pack(side="left", anchor="w", padx=xpad, pady=ypad)
+    stats_bt.pack(side="left", anchor="w", padx=xpad, pady=ypad)
+    
+    # Show monster stats Button
+    info_bt = tkinter.Button(master_butons, text="Additional Information",
+                              command=lambda:tkinter.messagebox.showinfo("Info", "Please look at the documentation at the bottom of the README.md.\nThe formatting is easiest to view on GitHub."))
+    info_bt.pack(side="left", anchor="w", padx=xpad, pady=ypad)
     
     #--------------------------------------------------------------------------
     # Event Log Frame
