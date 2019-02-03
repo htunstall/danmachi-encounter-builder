@@ -13,7 +13,7 @@ class Paths:
     modules = None
 
 class Conf:
-    version = "1.1.0"
+    version = "1.1.1"
     tag_number = 1
     solo_chance = None
     drop_chance = None
